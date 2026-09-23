@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vision Studios &amp; Venue</title>
+<meta name="description" content="Monthly studio space for artists and musicians, plus a 225-capacity live music venue.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --concrete: #DAD8D2;
+    --concrete-2: #C9C6BE;
+    --ink: #1B1F2E;
+    --ink-2: #2A3045;
+    --signal: #F2C230;
+    --brick: #9C3B2E;
+    --bg: var(--concrete);
+    --bg-alt: var(--concrete-2);
+    --fg: var(--ink);
+    --muted: #4A4F5E;
+    --line: #1B1F2E33;
+    --stage-bg: var(--ink);
+    --stage-fg: #ECEAE4;
+    --accent: var(--brick);
+    --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161A26; --bg-alt: #1F2433; --fg: #E6E3DC; --muted: #A6A9B4;
+      --line: #E6E3DC2E; --stage-bg: #0F121B; --stage-fg: #ECEAE4; --accent: #E0806F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161A26; --bg-alt: #1F2433; --fg: #E6E3DC; --muted: #A6A9B4;
+    --line: #E6E3DC2E; --stage-bg: #0F121B; --stage-fg: #ECEAE4; --accent: #E0806F;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--body); font-size: 1.0625rem; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+
+  .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+  }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 64px; }
+  .logo { font-family: var(--display); font-weight: 900; font-size: 1.6rem; letter-spacing: .01em; text-decoration: none; line-height: 1; }
+  .logo span { font-weight: 600; }
+  nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-size: .95rem; }
+  nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 620px) { nav ul { gap: 1rem; } nav li.hide-sm { display: none; } }
+
+  /* Hero diptych: day side and night side */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: min(82vh, 760px); }
+  .panel { padding: clamp(2rem, 5vw, 4.5rem); display: flex; flex-direction: column; justify-content: flex-end; gap: 1.25rem; }
+  .panel h1, .panel h2 {
+    font-family: var(--display); font-weight: 900; margin: 0;
+    font-size: clamp(3rem, 7.5vw, 6.5rem); line-height: .88; letter-spacing: -.005em;
+  }
+  .panel p { margin: 0; max-width: 34ch; font-size: 1.125rem; }
+  .panel .which { font-family: var(--display); font-weight: 600; font-size: 1.35rem; }
+  .day { background: var(--bg-alt); }
+  .night {
+    background:
+      radial-gradient(ellipse 55% 70% at 70% -5%, #F2C23055, transparent 70%),
+      var(--stage-bg);
+    color: var(--stage-fg);
+  }
+  .night h2 { color: var(--signal); }
+  .btn {
+    display: inline-block; align-self: flex-start; padding: .8rem 1.3rem;
+    font-family: var(--display); font-weight: 800; font-size: 1.2rem; letter-spacing: .02em;
+    text-decoration: none; border: 2px solid currentColor; border-radius: 2px;
+    background: transparent; color: inherit; cursor: pointer;
+  }
+  .btn:hover { background: var(--fg); color: var(--bg); }
+  .night .btn { background: var(--signal); color: var(--ink); border-color: var(--signal); }
+  .night .btn:hover { background: transparent; color: var(--signal); }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } .panel { min-height: 56vh; } }
+
+  /* Sections */
+  section.block { padding-block: clamp(3.5rem, 8vw, 6.5rem); border-bottom: 1px solid var(--line); }
+  .block h2 {
+    font-family: var(--display); font-weight: 800; margin: 0 0 1rem;
+    font-size: clamp(2.4rem, 5vw, 3.75rem); line-height: .95;
+  }
+  .lede { max-width: 60ch; color: var(--muted); margin: 0 0 2.5rem; font-size: 1.15rem; }
+  .split { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+
+  /* Studio rate sheet */
+  .rates { width: 100%; border-collapse: collapse; }
+  .rates th, .rates td { text-align: left; padding: 1rem .75rem 1rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rates thead th { font-weight: 600; font-size: .9rem; color: var(--muted); }
+  .rates td.size { font-family: var(--display); font-weight: 800; font-size: 1.6rem; line-height: 1.1; white-space: nowrap; }
+  .rates td.price { font-family: var(--display); font-weight: 800; font-size: 1.6rem; white-space: nowrap; }
+  .rates td.price small { font-family: var(--body); font-weight: 400; font-size: .85rem; color: var(--muted); }
+  .rates td.note { color: var(--muted); font-size: .95rem; }
+  .table-scroll { overflow-x: auto; }
+  .included h3, .venue-facts h3 { font-family: var(--display); font-weight: 800; font-size: 1.6rem; margin: 0 0 .75rem; }
+  .included ul, .venue-facts ul { margin: 0; padding-left: 1.1rem; }
+  .included li, .venue-facts li { margin-bottom: .45rem; }
+  .fine { font-size: .92rem; color: var(--muted); margin-top: 1.25rem; }
+
+  /* venue */
+  .venue { background: var(--stage-bg); color: var(--stage-fg); border-bottom: none; }
+  .venue .lede { color: #B9BBC4; }
+  .venue h2 { color: var(--signal); }
+  .shows { list-style: none; margin: 0; padding: 0; }
+  .shows li {
+    display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 1rem; align-items: baseline;
+    padding: 1.1rem 0; border-bottom: 1px solid #ECEAE42A;
+  }
+  .shows .date { font-family: var(--display); font-weight: 800; font-size: 1.35rem; color: var(--signal); line-height: 1.1; }
+  .shows .act { font-family: var(--display); font-weight: 800; font-size: 1.6rem; line-height: 1.1; }
+  .shows .act em { display: block; font-family: var(--body); font-weight: 400; font-style: italic; font-size: .95rem; color: #B9BBC4; margin-top: .2rem; }
+  .shows .door { font-size: .95rem; color: #B9BBC4; text-align: right; white-space: nowrap; }
+  @media (max-width: 560px) {
+    .shows li { grid-template-columns: 4.5rem 1fr; }
+    .shows .door { grid-column: 2; text-align: left; }
+  }
+  .venue-facts { border: 1px solid #ECEAE44D; padding: 1.5rem; }
+  .venue-facts p { margin: 1.25rem 0 0; }
+  .venue-facts a { color: var(--signal); }
+
+  /* Contact */
+  form { display: grid; gap: 1.1rem; max-width: 640px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+  label { display: grid; gap: .35rem; font-weight: 600; font-size: .95rem; }
+  input, select, textarea {
+    font: inherit; font-weight: 400; color: var(--fg); background: var(--bg);
+    border: 1.5px solid var(--fg); border-radius: 2px; padding: .7rem .8rem; width: 100%;
+  }
+  textarea { min-height: 8rem; resize: vertical; }
+  .confirm { display: none; padding: 1rem 1.2rem; border-left: 4px solid var(--signal); background: var(--bg-alt); }
+  .confirm.show { display: block; }
+  .visit p { margin: 0 0 1rem; }
+  .visit strong { font-family: var(--display); font-weight: 800; font-size: 1.3rem; display: block; }
+
+  footer { padding-block: 2rem; font-size: .9rem; color: var(--muted); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top">Vision <span>Studios &amp; Venue</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#studios">Studios</a></li>
+        <li><a href="#venue">The venue</a></li>
+        <li class="hide-sm"><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="panel day">
+      <span class="which">By day</span>
+      <h1>Rent a room this month.</h1>
+      <p>Private, lockable studios for musicians, producers, photographers, and artists. 24-hour access.</p>
+      <a class="btn" href="#studios">See studio rates</a>
+    </div>
+    <div class="panel night">
+      <span class="which">By night</span>
+      <h2>Hear a band this weekend.</h2>
+      <p>A 225-capacity room  with a stage, sound system and lights. With local and touring acts playing most weeks.</p>
+      <a class="btn" href="#venue">See who's playing</a>
+    </div>
+  </div>
+
+  <section class="block" id="studios">
+    <div class="wrap">
+      <h2>Studios</h2>
+      <p class="lede">Many studios are available for month-to-month with 30 days' notice to leave. Studio tours are available upon request.</p>
+      <div class="split">
+        <div class="table-scroll">
+          <table class="rates">
+            <thead>
+              <tr><th scope="col">Size</th><th scope="col">Monthly</th><th scope="col">Good for</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="note">Call for information about available rooms.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="included">
+          <h3>Every room includes</h3>
+          <ul>
+            <li>24-hour keycard access</li>
+            <li>Utilities and high-speed Wi-Fi</li>
+            <li>Shared load-in dock</li>
+            <li>Shared Restrooms</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block venue" id="venue">
+    <div class="wrap">
+      <h2>The venue</h2>
+      <p class="lede">Features a standing-room venue with a raised stage, house PA rental available upon request. </p>
+      <div class="split">
+        <div>
+          <ul class="shows" aria-label="Upcoming shows">
+            <li>
+              <span class="date">Dates TBD</span>
+              <span class="act">TDB</span>
+          </ul>
+        </div>
+        <aside class="venue-facts">
+          <h3>Book the venue</h3>
+          <p>Available for shows, album launches and private events. <a href="#contact">Ask about dates</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap split">
+      <div>
+        <h2>Get in touch!</h2>
+        <h4>At Vision Studios, we wanted to create more than just a place to rehearse or record. We wanted a space where artists feel comfortable, welcome, and free to create. Located in Atlanta, our studio is a home for musicians and creatives to work on their craft, collaborate, and bring their ideas to life.
+Beyond our rehearsal and recording spaces, Vision Studios also features an indoor live-performance venue designed for artists to share their work with a real audience. From intimate performances and showcases to live events and special productions, our venue gives artists a place to step out of the studio and onto the stage.
+Whether you’re developing your next project, preparing for a performance, recording new material, or putting on a show, Vision Studios is here to help bring your vision to life. Come create with us, book your space, and let’s make your next project something worth experiencing.</h4>
+        <p class="lede">.</p>
+        <!-- To make this form send on a static host like GitHub Pages, point it at a
+             form service (e.g. set action="https://formspree.io/f/yourid" method="POST")
+             and remove the script at the bottom of this file. -->
+        <form id="inquiry" novalidate>
+          <div class="row">
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <label>I'm asking about
+            <select name="topic">
+              <option>Renting a studio</option>
+              <option>Playing a show</option>
+              <option>A private event in the venue</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" required></textarea></label>
+          <button class="btn" type="submit">Send inquiry</button>
+          <div class="confirm" id="confirm" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="visit">
+        <p><strong>Visit</strong>3875 Green Industrial Way<br>Atlanta, GA 30341</p>
+        <p><strong>Office hours</strong>Monday to Friday, 10 to 6</p>
+        <p><strong>Call</strong><a href="tel:+14044356725">(404) 435-6725</a></p>
+        <p><strong>Email</strong><a href="mailto:hello@visionstudiosatl.com">hello@visionstudiosatlstudios.com</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 visionstudiosatl Studios &amp; Venue</span>
+    <span>Studios and live performance venue.</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('inquiry');
+    var confirm = document.getElementById('confirm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var msg = form.message.value.trim();
+      confirm.classList.add('show');
+      if (!name || !email || !msg || !form.email.checkValidity()) {
+        confirm.textContent = 'Add your name, a valid email and a message, then send again.';
+        return;
+      }
+      confirm.textContent = 'Inquiry sent. Thanks, ' + name + ', we\'ll reply to ' + email + ' within a few business days.';
+      form.reset();
+    });
+  })();
+</script>
+</body>
+</html>
 
